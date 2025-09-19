@@ -36,30 +36,34 @@ const Thumbnail = ({ product }: ThumbnailProps) => {
         href={`/product/${product.slug?.current}`}
         className={`block ${!isInStock ? "opacity-60" : ""}`}
       >
-        <div className="relative w-full aspect-[3/4] overflow-hidden">
-          <Image
-            src={imageUrl}
-            alt={product.productName || "product-image"}
-            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 "
-            height={270}
-            width={200}
-            priority
-          />
+        <div className="bg-white rounded-lg shadow-sm">
+          {/* Image wrapper with reduced padding */}
+          <div className="relative w-full h-72 overflow-hidden rounded-md bg-gray-50 flex items-center justify-center p-1">
+            <Image
+              src={imageUrl}
+              alt={product.productName || "product-image"}
+              className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+              height={288}
+              width={200}
+              priority
+            />
 
-          {!isInStock && (
-            <span className="absolute top-3 left-3 bg-black text-white text-xs tracking-wide px-2 py-1 rounded">
-              Out of Stock
-            </span>
-          )}
-        </div>
+            {!isInStock && (
+              <span className="absolute top-2 left-2 bg-black text-white text-xs tracking-wide px-2 py-1 rounded">
+                Out of Stock
+              </span>
+            )}
+          </div>
 
-        <div className="mt-3 text-center">
-          <h3 className="text-base font-medium text-gray-900 line-clamp-1">
-            {product.productName}
-          </h3>
-          <p className="text-sm font-semibold text-gray-800 mt-1">
-            ${product.price?.toFixed(2) || "0.00"}
-          </p>
+          {/* Product info */}
+          <div className="mt-3 text-center">
+            <h3 className="text-base font-medium text-gray-900 line-clamp-1">
+              {product.productName}
+            </h3>
+            <p className="text-sm font-semibold text-gray-800 mt-1">
+              ${product.price?.toFixed(2) || "0.00"}
+            </p>
+          </div>
         </div>
       </Link>
     </div>

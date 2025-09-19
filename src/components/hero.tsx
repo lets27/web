@@ -4,21 +4,29 @@
 import Image from "next/image";
 
 const HeroSection = () => (
-  <div className="w-full h-96 relative mb-12">
+  <div className="relative w-full h-[80vh] bg-gradient-to-r from-[#1a202c] via-[#2d3748] to-[#4a5568]">
     {/* Hero Image */}
     <Image
       src="/images/niki.webp"
       alt="Hero Section"
-      fill
-      className="object-cover"
+      layout="fill"
+      objectFit="cover"
+      className="opacity-50"
       priority
     />
 
-    {/* Overlay Text */}
-    <div className="absolute inset-0 flex items-center justify-center">
-      <h1 className="text-white text-4xl md:text-5xl font-bold bg-black bg-opacity-40 px-6 py-4 rounded">
-        Our Latest Collection
+    {/* Overlay Content */}
+    <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+      <h1 className="text-4xl md:text-5xl font-semibold mb-4">
+        Discover Our Latest Collection
       </h1>
+      <p className="text-lg mb-6">Trendy apparel to elevate your style.</p>
+      <a
+        href="/shop"
+        className="px-8 py-3 bg-yellow-500 text-black text-lg font-semibold rounded-full shadow-lg hover:bg-yellow-400 transition duration-300"
+      >
+        Shop Now
+      </a>
     </div>
   </div>
 );
