@@ -1,12 +1,7 @@
 import { BasketItem } from "@/lib/BaketContextProv";
 import { stripe } from "@/stripe";
 import { urlFor } from "@/sanity/sanityImageBuilder";
-const baseUrl =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
-    : process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = process.env.VERCEL_URL;
 
 export type Meta = {
   customerName: string;
