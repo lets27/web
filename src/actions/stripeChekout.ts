@@ -1,6 +1,12 @@
 import { BasketItem } from "@/lib/BaketContextProv";
 import { stripe } from "@/stripe";
 import { urlFor } from "@/sanity/sanityImageBuilder";
+const baseUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXT_PUBLIC_BASE_URL;
 
 export type Meta = {
   customerName: string;
@@ -66,8 +72,8 @@ export const stripeCheckOutSession = async (
     payment_method_types: ["card"],
     customer: customer.id,
     line_items: lineItems,
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
-    cancel_url: `http://localhost:3000/cancel`,
+    success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
+    cancel_url: `${baseUrl}/cancel`,
     metadata: {
       // ✅ Metadata now included
       orderNumber: metadata.orderNumber,
