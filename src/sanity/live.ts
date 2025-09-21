@@ -2,7 +2,6 @@ import { defineLive } from "next-sanity/live";
 import { client } from "@/sanity/client";
 
 const readToken = process.env.READ_TOKEN;
-console.log("read token:", readToken);
 
 // Only check token when actually needed (not during build)
 if (typeof window === "undefined" && !readToken) {
