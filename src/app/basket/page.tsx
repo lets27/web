@@ -60,7 +60,7 @@ const Basket = () => {
         const productPageUrl = `${process.env.NEXT_PUBLIC_BASE_URL?.replace(
           /\/$/,
           ""
-        )}/${item.product.slug.current}`;
+        )}/product/${item.product.slug.current}`;
         return `${idx + 1}. ${
           item.product.productName
         } - $${item.product.price?.toFixed(
