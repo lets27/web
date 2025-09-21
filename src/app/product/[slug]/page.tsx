@@ -32,7 +32,7 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
     : "https://placehold.co/300x200/png";
 
   return (
-    <div className="min-h-screen flex items-start justify-center px-4 py-4 mt-20">
+    <div className="min-h-screen flex items-start justify-center px-4 py-4 mt-10">
       <div className="max-w-7xl w-full flex flex-col gap-12">
         {/* Main product section */}
         <div className="flex flex-col md:flex-row gap-12">
