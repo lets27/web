@@ -56,7 +56,7 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
 
           {/* Product Info */}
           <div className="flex-1 flex flex-col justify-start gap-6">
-            <h1 className="text-5xl font-extrabold text-gray-900 leading-tight">
+            <h1 className="text-5xl font-semibold text-gray-900 leading-tight">
               {product.productName}
             </h1>
             <p className="text-3xl font-bold text-blue-600">${product.price}</p>

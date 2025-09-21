@@ -7,6 +7,8 @@ import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { Meta } from "@/actions/stripeChekout";
 import Image from "next/image";
+import CheckOutBtn from "@/components/checkoutBtn";
+import WhatsAppBtn from "@/components/whatsappBtn";
 
 const Basket = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +46,38 @@ const Basket = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+  const handleWhatsAppRedirect = () => {
+    const phoneNumber = process.env.NEXT_PUBLIC_OWNER_NUMBER; // owner's WhatsApp number
+    if (!phoneNumber) {
+      console.error("Owner's WhatsApp number is not set!");
+      return;
+    }
+
+    // Build order message with product page links
+    const itemsList = basketItems
+      .map((item, idx) => {
+        const productPageUrl = `${process.env.NEXT_PUBLIC_BASE_URL?.replace(
+          /\/$/,
+          ""
+        )}/${item.product.slug.current}`;
+        return `${idx + 1}. ${
+          item.product.productName
+        } - $${item.product.price?.toFixed(
+          2
+        )}\nProduct page: ${productPageUrl}`;
+      })
+      .join("\n\n");
+
+    const message = `Hello, I’d like to order the following items:\n\n${itemsList}\n\nTotal: $${totalPrice.toFixed(
+      2
+    )}\n\nMy name: ${user?.fullName || "Guest"}`;
+
+    const encodedMessage = encodeURIComponent(message);
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank"); // opens WhatsApp with pre-filled message
   };
 
   return (
@@ -102,16 +136,15 @@ const Basket = () => {
 
       {/* Basket Total + Checkout Button */}
       {basketItems.length > 0 && (
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between bg-gray-100 p-4 rounded-lg shadow-md">
-          <span className="text-lg font-bold mb-2 sm:mb-0">
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row items-center justify-between bg-white border border-gray-200 p-6 rounded-2xl shadow-lg">
+          <span className="text-xl font-semibold text-gray-800 mb-4 sm:mb-0">
             Your Total: ${totalPrice.toFixed(2)}
           </span>
-          <button
-            onClick={handleCheckOut}
-            className="px-6 py-2 bg-blue-500 text-white rounded-2xl hover:bg-blue-600 transition"
-          >
-            {isLoading ? "Processing..." : "Checkout"}
-          </button>
+          <CheckOutBtn isLoading={isLoading} handleCheckOut={handleCheckOut} />
+          <WhatsAppBtn
+            isLoading={isLoading}
+            handleOrder={handleWhatsAppRedirect}
+          />
         </div>
       )}
     </div>

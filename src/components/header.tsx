@@ -34,17 +34,6 @@ const Header = () => {
         letsStore
       </Link>
 
-      <Form action="/search" className="flex-1 w-full">
-        {/* expect to have a search page hence /search */}
-        <input
-          type="text"
-          name="query"
-          placeholder="Search for products"
-          className="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 w-full max-w-4xl"
-          ref={ref}
-        />
-      </Form>
-
       <div className="flex items-center gap-2 w-full sm:w-auto">
         <ClerkLoaded>
           {/* clerkLoad ensures no flashes of content before the user is loaded */}
@@ -71,18 +60,18 @@ const Header = () => {
                 <span>My Orders</span>
               </Link>
 
+              {/* Sign Out Button */}
+              <SignOutButton>
+                <button className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-black ">
+                  Sign out
+                </button>
+              </SignOutButton>
+
               {/* User Info */}
               <span className="flex gap-2 items-center text-sm text-gray-700">
                 <UserButton />
                 <span className="hidden sm:inline">{user.fullName}</span>
               </span>
-
-              {/* Sign Out Button */}
-              <SignOutButton>
-                <button className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-black w-full sm:w-auto">
-                  Sign out
-                </button>
-              </SignOutButton>
             </div>
           ) : (
             <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -98,6 +87,17 @@ const Header = () => {
           )}
         </ClerkLoaded>
       </div>
+
+      <Form action="/search" className="flex-1 w-full">
+        {/* expect to have a search page hence /search */}
+        <input
+          type="text"
+          name="query"
+          placeholder="Search for products"
+          className="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 w-full max-w-4xl"
+          ref={ref}
+        />
+      </Form>
     </header>
   );
 };
