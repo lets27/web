@@ -21,12 +21,9 @@ const HeroSection = () => (
         Discover Our Latest Collection
       </h1>
       <p className="text-lg mb-6">Trendy apparel to elevate your style.</p>
-      <a
-        href="/"
-        className="px-8 py-3 bg-yellow-500 text-black text-lg font-semibold rounded-full shadow-lg hover:bg-yellow-400 transition duration-300"
-      >
+      <span className="px-8 py-3 bg-yellow-500 text-black text-lg font-semibold rounded-full shadow-lg hover:bg-yellow-400 transition duration-300">
         Shop Now
-      </a>
+      </span>
     </div>
   </div>
 );
