@@ -49,7 +49,7 @@ export default function BasketTable({
           <TableHead className="text-gray-700 uppercase tracking-wide border-r border-gray-200">
             Price
           </TableHead>
-          <TableHead className="hidden sm:table-cell text-right text-gray-700 uppercase tracking-wide">
+          <TableHead className="hidden md:table-cell text-right text-gray-700 uppercase tracking-wide">
             Subtotal
           </TableHead>
         </TableRow>
@@ -94,7 +94,7 @@ export default function BasketTable({
                 ${product.price?.toFixed(2)}
               </TableCell>
 
-              <TableCell className="text-right text-gray-900 font-medium">
+              <TableCell className="hidden md:table-cell text-right text-gray-900 font-medium">
                 ${(product.price * item.quantity).toFixed(2)}
               </TableCell>
             </TableRow>
