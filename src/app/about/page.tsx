@@ -41,7 +41,7 @@ export default function AboutPage() {
           <Image
             src="/images/dude3.png"
             alt="About Us"
-            className="w-[90%] object-cover"
+            className="w-[90%] object-cover rounded-full"
             width={400}
             height={400}
           />
