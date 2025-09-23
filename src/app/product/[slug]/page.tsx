@@ -30,59 +30,89 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
         .auto("format")
         .url()
     : "https://placehold.co/300x200/png";
-
   return (
-    <div className="min-h-screen flex items-start justify-center px-4 py-4 mt-10">
-      <div className="max-w-7xl w-full flex flex-col gap-12">
-        {/* Main product section */}
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Product Image */}
-          <div className="flex-1">
+    <div className="min-h-screen px-4 py-10 bg-white">
+      <div className="max-w-6xl mx-auto flex flex-col gap-16">
+        {/* Product Section */}
+        <div className="flex flex-col md:flex-row gap-10 items-start">
+          {/* Image */}
+          <div className="md:w-1/2 w-full">
             {product.icon ? (
               <Image
                 src={imageUrl}
                 alt={product.productName}
                 width={800}
                 height={700}
-                className="w-full h-auto object-cover rounded-lg shadow-lg"
+                className="w-full h-auto object-cover border border-gray-300  shadow-md transition-transform duration-300 hover:scale-105"
                 priority
               />
             ) : (
-              <div className="w-full h-96 bg-gray-200 flex items-center justify-center rounded-lg">
+              <div className="w-full h-96 bg-gray-100 flex items-center justify-center rounded-md border border-gray-300">
                 <span className="text-gray-500">No image available</span>
               </div>
             )}
           </div>
 
-          {/* Product Info */}
-          <div className="flex-1 flex flex-col justify-start gap-6">
-            <h1 className="text-5xl font-semibold text-gray-900 leading-tight">
+          {/* Info */}
+          <div className="md:w-1/2 w-full flex flex-col gap-6">
+            <h1 className="text-5xl  font-thin text-gray-900 tracking-tight leading-snug">
               {product.productName}
             </h1>
-            <p className="text-3xl font-bold text-blue-600">${product.price}</p>
-            <span
-              className={`inline-block px-4 py-2 text-sm font-semibold rounded-full ${
-                product.stock > 0
-                  ? "bg-green-100 text-green-800"
-                  : "bg-red-100 text-red-800"
-              }`}
-            >
-              {product.stock > 0 ? "In Stock" : "Out of Stock"}
-            </span>
-            {product.stock > 0 && (
-              <span className="text-sm text-gray-600">
-                {product.stock} available
-              </span>
-            )}
-            <p className="text-gray-700 text-lg leading-relaxed">
-              {product.description}
+            <p className="text-3xl font-thin px-5 py-2   w-fit">
+              ${product.price}
             </p>
-            <AddToBasketBtn product={product} />
+            <div className="flex flex-col gap-2">
+              <h3 className=" font-light text-gray-900 tracking-tight leading-snug">
+                available sizes:
+              </h3>
+              <div className="flex gap-4 items-center">
+                {["M", "S", "XL"].map((size) => (
+                  <div
+                    key={size}
+                    className="w-12 h-12 flex items-center justify-center border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:border-black hover:text-black transition-colors duration-200 cursor-pointer"
+                  >
+                    {size}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <span
+                className={`px-4 py-1 text-sm font-semibold rounded-full shadow-sm ${
+                  product.stock > 0
+                    ? "bg-green-600 text-white"
+                    : "bg-red-600 text-white"
+                }`}
+              >
+                {product.stock > 0 ? "In Stock" : "Out of Stock"}
+              </span>
+              {product.stock > 0 && (
+                <span className="text-sm text-gray-500">
+                  {product.stock} available
+                </span>
+              )}
+            </div>
+            <div className="flex flex-col rounded-sm ">
+              <h3 className="text-lg font-semibold uppercase tracking-wide text-gray-800 border border-gray-300 px-4 py-2  w-fit">
+                Description
+              </h3>
+
+              <div className="border border-gray-300  px-4 py-4 bg-gray-50">
+                <p className="text-gray-700 text-[15px] leading-relaxed whitespace-pre-line tracking-wide">
+                  {product.description}
+                </p>
+              </div>
+            </div>
+            <div className="mt-6">
+              <AddToBasketBtn product={product} />
+            </div>
           </div>
         </div>
 
-        {/* Related Products below main content */}
-        <RelatedProductsSlider images={product.relatedProducts} />
+        {/* Related Products */}
+        <div className="flex items-center gap-2">
+          <RelatedProductsSlider images={product.relatedProducts} />{" "}
+        </div>
       </div>
     </div>
   );

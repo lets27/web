@@ -36,15 +36,14 @@ const Thumbnail = ({ product }: ThumbnailProps) => {
         href={`/product/${product.slug?.current}`}
         className={`block ${!isInStock ? "opacity-60" : ""}`}
       >
-        <div className="bg-white rounded-lg shadow-sm">
-          {/* Image wrapper with reduced padding */}
-          <div className="relative w-full h-72 overflow-hidden rounded-md bg-gray-50 flex items-center justify-center p-1">
+        <div className="bg-white rounded-md shadow hover:shadow-md transition-shadow duration-300">
+          {/* Image wrapper */}
+          <div className="relative w-full h-72 overflow-hidden rounded-t-md bg-white flex items-center justify-center">
             <Image
               src={imageUrl}
               alt={product.productName || "product-image"}
-              className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
-              height={288}
-              width={200}
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
+              fill
               priority
             />
 
@@ -56,11 +55,11 @@ const Thumbnail = ({ product }: ThumbnailProps) => {
           </div>
 
           {/* Product info */}
-          <div className="mt-3 text-center">
-            <h3 className="text-base font-medium text-gray-900 line-clamp-1">
+          <div className="px-2 py-3 text-center">
+            <h3 className="text-sm font-medium text-gray-800 line-clamp-1 group-hover:text-black transition-colors duration-200">
               {product.productName}
             </h3>
-            <p className="text-sm font-semibold text-gray-800 mt-1">
+            <p className="text-sm font-semibold text-gray-900 mt-1">
               ${product.price?.toFixed(2) || "0.00"}
             </p>
           </div>

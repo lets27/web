@@ -3,8 +3,6 @@ import CategoryFilter from "./CategoryFilter";
 import { fetchQuery } from "@/lib/queries/fetcher";
 import HeroSection from "./hero";
 
-import PromoBoxes from "./boxes";
-
 const ProductView = async () => {
   const products = await fetchQuery("allProducts");
   const categories = await fetchQuery("categories");
@@ -19,7 +17,7 @@ const ProductView = async () => {
           latest Arrivals
         </h2>
         <div className="border-2 mb-4 border-black"></div>
-        <PromoBoxes />
+
         <ProductsGrid products={products} />
       </div>
     </div>

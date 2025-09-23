@@ -1,13 +1,10 @@
-import type { ReactNode } from "react";
-import { Geist } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Header from "@/components/header";
+
 import { SanityLive } from "@/sanity/live";
 import { BasketProvider } from "@/lib/BaketContextProv";
 import Footer from "@/components/footer";
-
-const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+import Navbar from "@/components/nav2";
 
 export const metadata = {
   title: "Create Next App",
@@ -24,7 +21,9 @@ export default function RootLayout({
       <html lang="en">
         <body className="min-h-screen flex flex-col font-sans antialiased">
           <BasketProvider>
-            <Header />
+            {/* <Header /> */}
+
+            <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
           </BasketProvider>

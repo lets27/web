@@ -13,13 +13,18 @@ interface RelatedProductsSliderProps {
 
 const RelatedProductsSlider = ({ images }: RelatedProductsSliderProps) => {
   if (!images?.length) return null;
-
   return (
     <div className="mt-12 w-full">
-      <h2 className="text-2xl font-bold mb-4">Related Products</h2>
+      <div className="flex items-center justify-center mb-10 gap-4">
+        <div className="flex-grow border-t-2 border-black border-solid mt-2"></div>
+        <h2 className="text-3xl font-thin  tracking-wide uppercase text-gray-900 whitespace-nowrap">
+          Related Products
+        </h2>
+        <div className="flex-grow border-t-2 border-black border-solid mt-2"></div>
+      </div>
 
       {/* Desktop = horizontal scroll | Mobile = wrap */}
-      <div className="flex flex-wrap gap-4 md:flex-nowrap md:overflow-x-auto pb-4">
+      <div className="flex flex-wrap gap-6 md:flex-nowrap md:overflow-x-auto pb-4">
         {images.map((img, idx) => {
           const imageUrl = img?.asset
             ? urlFor(img)
@@ -33,8 +38,8 @@ const RelatedProductsSlider = ({ images }: RelatedProductsSliderProps) => {
           return (
             <div
               key={img._key || idx}
-              className="flex-shrink-0 w-40 sm:w-48 h-60 rounded-lg overflow-hidden shadow-md 
-                         transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg cursor-pointer"
+              className="flex-shrink-0 w-40 sm:w-48 h-60 rounded-xl overflow-hidden shadow-md 
+                       transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer"
             >
               <Image
                 src={imageUrl}

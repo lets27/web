@@ -3,8 +3,8 @@ const Footer = () => (
     <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Brand / About */}
       <div className="text-center md:text-left space-y-2">
-        <h4 className="text-2xl font-bold">letsStore</h4>
-        <p className="text-sm text-gray-300">
+        <h4 className="text-2xl text-[#EB8D2E] font-bold">letsStore</h4>
+        <p className="text-sm text-[#EB8D2E]">
           Elevating your style with premium fashion collections.
         </p>
       </div>
