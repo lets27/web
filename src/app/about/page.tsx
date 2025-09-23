@@ -39,7 +39,7 @@ export default function AboutPage() {
         </div>
         <div className="md:w-1/2 flex justify-end items-start">
           <Image
-            src="/images/leader.png"
+            src="/images/dude3.png"
             alt="About Us"
             className="w-[90%] object-cover"
             width={400}
@@ -62,7 +62,7 @@ export default function AboutPage() {
         </div>
         <div className="md:w-1/2 flex justify-start items-center">
           <Image
-            src="/images/leader.png"
+            src="/images/dude2.png"
             alt="Our Vision"
             className="w-[350px] h-[350px] object-cover rounded-full"
             width={350}
