@@ -13,19 +13,13 @@ function TestimonialsPage() {
       name: "Naledi K.",
       quote:
         "I love how easy it is to manage my store. The team really understands user experience.",
-      image: "/images/leader.png",
+      image: "/images/chick-black.png",
     },
     {
       name: "Kabelo R.",
       quote:
         "Support was fast and helpful. I felt like I had a partner in building my brand.",
-      image: "/images/leader.png",
-    },
-    {
-      name: "Boitumelo S.",
-      quote:
-        "From layout to performance, everything feels premium. Highly recommend!",
-      image: "/images/leader.png",
+      image: "/images/dude.png",
     },
   ];
 

@@ -72,7 +72,7 @@ export function HiddenDropDown() {
             </DropdownMenuPortal>
           </DropdownMenuSub>
           <DropdownMenuItem asChild>
-            <Link href="/contact" className="flex justify-between w-full">
+            <Link href="/about" className="flex justify-between w-full">
               <span>About Us</span>
               <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
             </Link>

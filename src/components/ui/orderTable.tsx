@@ -37,7 +37,7 @@ export default function BasketTable({
 
       <TableHeader className="bg-gray-100 border-b border-gray-300">
         <TableRow>
-          <TableHead className="w-[80px] text-gray-700 uppercase tracking-wide border-r border-gray-200">
+          <TableHead className="hidden md:table-cell w-[80px] text-gray-700 uppercase tracking-wide border-r border-gray-200">
             Image
           </TableHead>
           <TableHead className="text-gray-700 uppercase tracking-wide border-r border-gray-200">
