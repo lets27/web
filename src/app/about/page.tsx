@@ -37,13 +37,13 @@ export default function AboutPage() {
             Learn More
           </button>
         </div>
-        <div className="md:w-1/2 flex justify-end items-start">
+        <div className="md:w-1/2 flex justify-start items-center">
           <Image
             src="/images/dude3.png"
             alt="About Us"
-            className="w-[90%] object-cover rounded-full"
-            width={400}
-            height={400}
+            className="w-[350px] h-[350px] object-cover rounded-full"
+            width={350}
+            height={350}
           />
         </div>
       </div>
