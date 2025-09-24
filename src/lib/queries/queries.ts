@@ -95,3 +95,12 @@ export const userOrdersQuery = defineQuery(`
     orderDate
   }
 `);
+
+export const allSalesQuery = defineQuery(`*[_type == "sale"]{
+  _id,
+  title,
+  tagline,
+  description,
+  active,
+  validUntil
+}`);

@@ -1,5 +1,6 @@
 import {
   AllProductsQueryResult,
+  AllSalesQueryResult,
   CategoriesQueryResult,
   ProductBySlugQueryResult,
   ProductsByCategorySlugQueryResult,
@@ -13,6 +14,7 @@ import {
   productsByCategorySlugQuery,
   productSearchQuery,
   userOrdersQuery,
+  allSalesQuery,
 } from "./queries";
 
 // lib/queries/queriesMap.ts
@@ -23,6 +25,7 @@ export const queries = {
   searchProdByName: productSearchQuery,
   searchByCategory: productsByCategorySlugQuery,
   userOrders: userOrdersQuery,
+  allSales: allSalesQuery,
 } as const;
 
 // Map query keys to their return types
@@ -33,4 +36,5 @@ export type QueryResultMap = {
   searchProdByName: ProductSearchQueryResult;
   searchByCategory: ProductsByCategorySlugQueryResult;
   userOrders: UserOrdersQueryResult;
+  allSales: AllSalesQueryResult; // Replace 'any' with the actual type if available
 };

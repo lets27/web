@@ -377,6 +377,9 @@ export type UserOrdersQueryResult = Array<{
   status: "cancelled" | "delivered" | "paid" | "pending" | "shipped" | null;
   orderDate: string | null;
 }>;
+// Variable: allSalesQuery
+// Query: *[_type == "sale"]{  _id,  title,  tagline,  description,  active,  validUntil}
+export type AllSalesQueryResult = Array<never>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -388,5 +391,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"product\" && productName match $searchTerm + \"*\"] | order(productName asc) {\n    _id,\n    productName,\n    description,\n    price,\n    icon,\n    slug,\n    stock,relatedProducts[]{  // <-- add the spread operator for array of images\n    _key,\n    asset->{_id, url} // grab the asset reference so you can use it in urlFor\n  },\n    category\n  }\n": ProductSearchQueryResult;
     "\n  *[_type == \"product\" && $slug in category[]->slug.current] | order(productName asc) {\n    _id,\n    productName,\n    description,\n    price,\n    icon,\n    slug,\n    stock,relatedProducts[]{  // <-- add the spread operator for array of images\n    _key,\n    asset->{_id, url} // grab the asset reference so you can use it in urlFor\n  },\n    category[]->{\n      _id,\n      title,\n      slug\n    }\n  }\n": ProductsByCategorySlugQueryResult;
     "\n  *[_type == \"order\" && customerEmail == $email] | order(orderDate desc) {\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    orderNumber,\n    stripeCheckoutSessionId,\n    stripeCustomerId,\n    customerEmail,\n    stripePaymentId,\n    currency,\n    amountDiscount,\n    totalPrice,\n    status,\n    orderDate\n  }\n": UserOrdersQueryResult;
+    "*[_type == \"sale\"]{\n  _id,\n  title,\n  tagline,\n  description,\n  active,\n  validUntil\n}": AllSalesQueryResult;
   }
 }
