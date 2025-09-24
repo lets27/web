@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useRef, useState } from "react";
-import { useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 import DropDown from "./dropDownAuth";
 import { HiddenDropDown } from "./ui/hidenDropDown";
 import Form from "next/form";
@@ -27,6 +27,7 @@ const Navbar = () => {
     { href: "/orders", label: "ORDERS" },
     { href: "/about", label: "ABOUT US" },
   ];
+
   return (
     <div className="w-full border-b border-gray-300  flex flex-col">
       <div className="flex items-cente justify-between  py-5 font-medium  ml-20 mr-20">
@@ -79,7 +80,10 @@ const Navbar = () => {
               {basketCount}
             </span>
           </Link>
-
+          <span className="flex gap-2 items-center text-sm text-gray-700">
+            <UserButton />
+            <span className="hidden sm:inline">{user?.fullName}</span>
+          </span>
           <div className={`${!user ? "" : "hidden sm:block"}`}>
             <DropDown />
           </div>
